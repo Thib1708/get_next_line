@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 12:44:31 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/17 10:37:31 by tgiraudo         ###   ########.fr       */
+/*   Created: 2022/11/16 23:17:10 by tgiraudo          #+#    #+#             */
+/*   Updated: 2022/11/16 23:17:36 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
@@ -26,17 +26,17 @@ size_t	ft_strlen(const char *str)
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	char	*ptr;
+	char	*str;
 
-	// if (count == 0 || size == 0)
-	// 	return (malloc(0));
-	// if (4294967295 / size < count)
-	// 	return (NULL);
-	ptr = malloc(count * size);
-	if (!ptr)
+	if (count == 0 || size == 0)
+		return (malloc(0));
+	if (4294967295 / size < count)
 		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	str = malloc(sizeof(char) * (count * size));
+	if (!str)
+		return (NULL);
+	ft_bzero(str, count * size);
+	return (str);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -60,10 +60,10 @@ char	*ft_strjoin(char const *s1, char const *s2)
 void	ft_bzero(void *b, size_t n)
 {
 	char			*str;
-	size_t			i;
+	unsigned int	i;
 
+	str = b;
 	i = 0;
-	str = (char *)b;
 	while (n > i)
 	{
 		str[i] = '\0';

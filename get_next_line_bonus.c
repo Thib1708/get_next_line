@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 12:09:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/17 11:27:16 by tgiraudo         ###   ########.fr       */
+/*   Created: 2022/11/16 23:17:18 by tgiraudo          #+#    #+#             */
+/*   Updated: 2022/11/17 12:03:57 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_free(char *save, char *buffer)
 {
@@ -69,12 +69,12 @@ char	*ft_next_line(char *save)
 	return (next_line);
 }
 
-char	*ft_read_buf(char *save, int fd)
+char	*read_buf(char *save, int fd)
 {
 	char	*buffer;
 	int		size;
 
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	buffer = calloc(BUFFER_SIZE + 1, sizeof(char));
 	size = 1;
 	while (size && !new_line(save))
 	{
@@ -87,23 +87,24 @@ char	*ft_read_buf(char *save, int fd)
 		buffer[size] = '\0';
 		save = ft_free(save, buffer);
 	}
-	free(buffer);
 	return (save);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*save;
+	static char	*save[OPEN_MAX];
 	char		*line;
+	int			size;
 
+	if (!save[fd])
+		save[fd] = calloc(1, sizeof(char));
 	if (fd < 0 || read(fd, 0, 0) < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!save)
-		save = ft_calloc(1, sizeof(char));
-	save = ft_read_buf(save, fd);
-	if (!save)
+	size = 1;
+	save[fd] = read_buf(save[fd], fd);
+	if (!save[fd])
 		return (NULL);
-	line = ft_line(save);
-	save = ft_next_line(save);
+	line = ft_line(save[fd]);
+	save[fd] = ft_next_line(save[fd]);
 	return (line);
 }
