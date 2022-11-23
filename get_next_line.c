@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 12:09:46 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/17 11:27:16 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/11/23 10:55:37 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ char	*ft_read_buf(char *save, int fd)
 		size = read(fd, buffer, BUFFER_SIZE);
 		if (size < 0)
 		{
-			free(save);
+			free(buffer);
 			return (NULL);
 		}
 		buffer[size] = '\0';

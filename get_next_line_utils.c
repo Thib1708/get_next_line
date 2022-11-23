@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:44:31 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/17 10:37:31 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/11/23 10:40:20 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,6 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	char	*ptr;
 
-	// if (count == 0 || size == 0)
-	// 	return (malloc(0));
-	// if (4294967295 / size < count)
-	// 	return (NULL);
 	ptr = malloc(count * size);
 	if (!ptr)
 		return (NULL);

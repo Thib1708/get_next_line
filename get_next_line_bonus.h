@@ -6,7 +6,7 @@
 /*   By: tgiraudo <tgiraudo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:17:02 by tgiraudo          #+#    #+#             */
-/*   Updated: 2022/11/17 10:45:41 by tgiraudo         ###   ########.fr       */
+/*   Updated: 2022/11/23 10:39:57 by tgiraudo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@
 # endif
 
 # ifndef OPEN_MAX
-#  define OPEN_MAX 1024
+#  define OPEN_MAX 10240
 # endif
-
 
 # include <stdlib.h>
 # include <unistd.h>
