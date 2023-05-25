@@ -34,7 +34,6 @@ int main() {
     }
 
     // Read lines from the file until the end is reached
-    line = get_next_line(fd, line);
     while (1) {
         // Process the line
         line = get_next_line(fd, line);
