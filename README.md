@@ -11,12 +11,6 @@ To get started with the `get_next_line` project, follow these steps:
 
 ## Usage
 
-To use the `get_next_line` function in your own programs, follow these steps:
-
-1. Include the `get_next_line.h` header file in your source code.
-2. Link your program with the appropriate library or implementation of `get_next_line`.
-3. Call the `get_next_line` function with the file descriptor and a pointer to a character pointer.
-
 Here's an example of how to use `get_next_line`:
 
 ```c
